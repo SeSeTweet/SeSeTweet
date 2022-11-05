@@ -1,4 +1,4 @@
-dateutil
 pysocks
+python-dateutil
 pyyaml
 tweepy

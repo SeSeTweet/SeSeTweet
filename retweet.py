@@ -81,13 +81,22 @@ def home_timeline(twitter: Client) -> None:
             "place_type",
         ],
     ).data:  # type: ignore
+        retweeted_ids = {
+            tweet.id
+            for tweet in twitter.get_users_tweets(
+                id=twitter.get_me().data.id,  # type: ignore
+                max_results=CONFIG["MaxResults"]["Tweets"],
+            ).data  # type: ignore
+        }
         for tweet in timeline:
             if (
-                matcher(tweet)
-                and twitter.retweet(tweet_id=tweet.id).data[  # type:ignore
+                tweet.id not in retweeted_ids
+                and matcher(tweet)
+                and twitter.retweet(tweet_id=tweet.id).data[  # type: ignore
                     "retweeted"
                 ]
             ):
                 logger.info(
-                    f"retweeted success, id {tweet.id} text {tweet.text}"
+                    f"retweeted success, id: {tweet.id}, text: {tweet.text}"
                 )
+                retweeted_ids.add(tweet.id)
