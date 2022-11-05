@@ -1,0 +1,20 @@
+BEARER_TOKEN:
+CONSUMER_KEY:
+CONSUMER_SECRET:
+ACCESS_TOKEN:
+ACCESS_TOKEN_SECRET:
+
+WaitOnRateLimit: True
+
+Proxy:
+  Host:
+  Port:
+
+MaxResults:
+  Tweets: 10
+
+Rule:
+
+Rules:
+  and:
+    - Rules/Sensitive.yml

@@ -1,0 +1,4 @@
+dateutil
+pysocks
+pyyaml
+tweepy

@@ -1,0 +1,4 @@
+Rule:
+  and:
+    - type: sensitive
+      value: null
